@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity
 
     for (int i = 0; i < flowers.size(); i++)
     {
-      //retrieve all roses
-      if (flowers.get(i).flowerSpecies() == 0)
+      //retrieve all tulips
+      if (flowers.get(i).flowerSpecies() == 1)
       {
         showThis += flowers.get(i).flowerName() + "\n";
       }
