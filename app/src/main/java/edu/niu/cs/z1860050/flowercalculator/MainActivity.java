@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity
   ColorData colorsData = new ColorData();
   SpeciesData speciesData = new SpeciesData();
 
-  ArrayList<Flower> flowers = new ArrayList<Flower>();
+  ArrayList<Flower> flowers = new ArrayList<>();
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity
 
     //insert the values into their containers
     buildAllFlowers();
+
+    mainTV.setText("total = " + flowers.size());
   }
 
   //method to build all the valid flowers in the game
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity
     }//end outer for
   }//end buildAllFlowers
 
-  public void changeText()
+  public void changeText(View view)
   {
     String showThis = "";
 
