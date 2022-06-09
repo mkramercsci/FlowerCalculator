@@ -1,5 +1,7 @@
 package edu.niu.cs.z1860050.flowercalculator;
 
+// index into this for strings of colorvals
+// colors are sorted by most to least frequently used by species
 public class ColorData
 {
   static public String colorValues[] =

@@ -6,44 +6,46 @@ public class Flower
   private int species;
   private int color;
 
-  private ColorData colorData = new ColorData();
   private SpeciesData speciesData = new SpeciesData();
+  private ColorData colorData = new ColorData();
 
+  //default constructor
   public Flower()
   {
     color = 0;
     species = 0;
   }
 
+  //constructor with species and color specified as an index to colorData and speciesData
   public Flower(int newSpecies, int newColor)
   {
     species = newSpecies;
     color = newColor;
   }
 
-  //returns the index of SpeciesData
+  // returns the index of SpeciesData
   public int flowerSpecies()
   {
     return species;
   }
 
-  //returns the index of ColorData
+  // returns the index of ColorData
   public int flowerColor()
   {
     return color;
   }
 
-  public void setColor(int color)
+  public void setColor(int newColor)
   {
-    this.color = color;
+    color = newColor;
   }
 
-  public void setSpecies(int species)
+  public void setSpecies(int newSpecies)
   {
-    this.species = species;
+    species = newSpecies;
   }
 
-  // return color + species to assist with printing
+  // method to assist with printing
   // ex: "orange hyacinths", "red lilies", "blue roses"
   public String flowerName()
   {

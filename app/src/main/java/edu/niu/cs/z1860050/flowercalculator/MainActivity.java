@@ -1,19 +1,20 @@
 package edu.niu.cs.z1860050.flowercalculator;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
 {
   TextView mainTV;
-  Button button;
+  Button button, redBtn;
 
   private static final Integer NUM_COLORS = 9;
   private static final Integer NUM_SPECIES = 8;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity
 
   ArrayList<Flower> flowers = new ArrayList<>();
 
+  @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
@@ -34,7 +36,8 @@ public class MainActivity extends AppCompatActivity
     mainTV = findViewById(R.id.mainTextView);
 
     //connect to the on screen button
-    button = findViewById(R.id.button);
+    redBtn = findViewById(R.id.redButton);
+    redBtn.setText("Red");
 
     //insert the values into their containers
     buildAllFlowers();
