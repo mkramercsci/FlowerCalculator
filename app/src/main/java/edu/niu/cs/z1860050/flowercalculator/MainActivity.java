@@ -112,8 +112,15 @@ public class MainActivity extends AppCompatActivity
     exists[6] = isWindflowers;
     exists[7] = isPansies;
 
-    // hybrid matrix for roses
-    Integer hybridRoses[][] = new Integer[][] {
+    //for every valid flower, we move one row down the hybrids array
+    //and use the vals stored in that row to build the flower(s)
+    //'gold' and 'blue' refer to star colors from the original chart, not flower color itself
+    // 0 = flower from seeds
+    // 1 = gold hybrid
+    // 2 = blue hybrid  (only roses use this val)
+    // 3 = final hybrid
+    Integer hybrids[][] = new Integer[][] {
+        // ROSES
         new Integer[] {0},    //red
         new Integer[] {0, 1}, //white
         new Integer[] {0},    //yellow
@@ -122,23 +129,82 @@ public class MainActivity extends AppCompatActivity
         new Integer[] {3},    //blue
         new Integer[] {1, 2}, //purple
         new Integer[] {3},    //black
-        new Integer[] {null}  //green
+        // TULIPS
+        new Integer[] {0},    //red
+        new Integer[] {0},    //white
+        new Integer[] {0, 1}, //yellow
+        new Integer[] {1},    //orange
+        new Integer[] {3},    //pink
+        new Integer[] {3},    //purple
+        new Integer[] {3},    //black
+        //HYACINTHS
+        new Integer[] {0},    //red
+        new Integer[] {0},    //white
+        new Integer[] {0, 1}, //yellow
+        new Integer[] {1},    //orange
+        new Integer[] {3},    //pink
+        new Integer[] {3},    //blue
+        new Integer[] {3},    //purple
+        //LILIES - white lily isn't used for any crossbreeding
+        new Integer[] {0},    //red
+        new Integer[] {0},    //white
+        new Integer[] {0},    //yellow
+        new Integer[] {3},    //orange
+        new Integer[] {3},    //pink
+        new Integer[] {3},    //black
+        //COSMOS
+        new Integer[] {0},    //red
+        new Integer[] {0},    //white
+        new Integer[] {0},    //yellow
+        new Integer[] {1},    //orange
+        new Integer[] {3},    //pink
+        new Integer[] {3},    //black
+        //MUMS
+        new Integer[] {0},    //red
+        new Integer[] {0},    //white
+        new Integer[] {0, 1}, //yellow
+        new Integer[] {3},    //pink
+        new Integer[] {1},    //purple
+        new Integer[] {3},    //green
+        //WINDFLOWERS
+        new Integer[] {0, 1}, //red
+        new Integer[] {0},    //white
+        new Integer[] {0},    //orange
+        new Integer[] {3},    //pink
+        new Integer[] {1},    //blue
+        new Integer[] {3},    //purple
+        //PANSIES
+        new Integer[] {0, 1}, //red
+        new Integer[] {0},    //white
+        new Integer[] {0},    //yellow
+        new Integer[] {3},    //orange
+        new Integer[] {1},    //blue
+        new Integer[] {3},    //purple
+
     };
+
+    //keeps track of current row in the hybrid matrix
+    int currHybrid = 0;
 
     //traverse the species/color matrix and build only the flowers that exist in the game
     for (int currSpecies = 0; currSpecies < NUM_SPECIES; currSpecies++)
     {
       for (int currColor = 0; currColor < NUM_COLORS; currColor++)
       {
-        //we found a flower which exists, so add it into the list
+        //we found a flower which exists
         if (exists[currSpecies][currColor])
         {
+          //CHANGE THIS so the Flowers have Hybrid Level int value
+          //read FROM hybrids[] array
+          //hybrids[20] = 0, 1 should make flowers with val 0 and 1
+
           Flower flower = new Flower(currSpecies, currColor);
           flowers.add(flower);
+          currHybrid++;
         }
       }//end inner for
     }//end outer for
-    
+
   }//end buildAllFlowers
 
   //test function to prove all the flowers built successfully
