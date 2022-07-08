@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity
   //holds all flowers that exist in the game
   ArrayList<Flower> flowers = new ArrayList<>();
 
-  @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity
     { }
   };//end OnItemSelectedListener
 
-  //method to build all the valid flowers in the game
+  //method to build all the flowers in the game
   public void buildAllFlowers()
   {
     // gold roses not included because they don't involve breeding
@@ -113,7 +112,7 @@ public class MainActivity extends AppCompatActivity
     exists[7] = isPansies;
 
     //for every valid flower, we move one row down the hybrids array
-    //and use the vals stored in that row to build the flower(s)
+    //and use that row to set hybrid level when build the flower(s)
     //'gold' and 'blue' refer to star colors from the original chart, not flower color itself
     // 0 = flower from seeds
     // 1 = gold hybrid
@@ -180,45 +179,57 @@ public class MainActivity extends AppCompatActivity
         new Integer[] {3},    //orange
         new Integer[] {1},    //blue
         new Integer[] {3},    //purple
-
     };
 
     //keeps track of current row in the hybrid matrix
     int currHybrid = 0;
 
-    //traverse the species/color matrix and build only the flowers that exist in the game
+    //loop through all species
     for (int currSpecies = 0; currSpecies < NUM_SPECIES; currSpecies++)
     {
+      //loop through all colors
       for (int currColor = 0; currColor < NUM_COLORS; currColor++)
       {
         //we found a flower which exists
         if (exists[currSpecies][currColor])
         {
-          //CHANGE THIS so the Flowers have Hybrid Level int value
-          //read FROM hybrids[] array
-          //hybrids[20] = 0, 1 should make flowers with val 0 and 1
+          //loop through the current hybrids row and make a flower for each val
+          //hybrids[3] = {1, 2} makes two orange roses with hybrid levels 1 and 2
+          for (int i = 0; i < hybrids[currHybrid].length; i++)
+          {
+            //i represents the current integer within the hybrid row
+            //hybrids[1][0] = orange rose level 1
+            //hybrids[1][1] = orange rose level 2
+            Flower flower = new Flower(currSpecies, currColor, hybrids[currHybrid][i]);
+            flowers.add(flower);
+          }
 
-          Flower flower = new Flower(currSpecies, currColor);
-          flowers.add(flower);
+          //move to the next existing flower in the hybrid matrix
           currHybrid++;
-        }
+        }//end if exists
       }//end inner for
     }//end outer for
 
   }//end buildAllFlowers
 
-  //test function to prove all the flowers built successfully
-  //currently not connected to any button
+  // method to build all flower pairs
+  public void buildAllPairs()
+  {
+    Pair a = new Pair();
+  }
+
+  //method for testing that prints in the main textview
+  //currently connected to the RED button
   public void changeText(View view)
   {
     String showThis = "";
 
     for (int i = 0; i < flowers.size(); i++)
     {
-      //retrieve all tulips
-      if (flowers.get(i).flowerSpecies() == 1)
+      //retrieve all flowers of a certain species
+      if (flowers.get(i).flowerSpecies() == 7)
       {
-        showThis += flowers.get(i).flowerName() + "\n";
+        showThis += flowers.get(i).flowerName() + " " + flowers.get(i).flowerHybridLevel() + "\n";
       }
     }
 
@@ -236,16 +247,6 @@ public class MainActivity extends AppCompatActivity
     //find out which flower we want
       //make a determineSelected method?
 
-    //check the list of recipes where result = currentFlower
-      //use a boolean flag to check seedbag colors, hybrids may have multiple recipes
-
-    //check the list of recipes where parent A or B = currentFlower
-      //indicate hybrid level with a number 0-3
-      // 3 = seedbag
-      // 2 = blue hybrid
-      // 1 = yellow hybrid
-      // 0 = final hybrid
-
+    //scan a list of recipes for any occurance of selected flower as parents or child
   }
-
 }// end MainActivity

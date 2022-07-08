@@ -5,7 +5,7 @@ package edu.niu.cs.z1860050.flowercalculator;
 public class ColorData
 {
   static public String colorValues[] =
-      {"red", "white", "yellow", "orange", "pink", "blue", "purple", "black", "green"};
+      {"Red", "White", "Yellow", "Orange", "Pink", "Blue", "Purple", "Black", "Green"};
 
   //retrieve values from the array
   public String get(int i)

@@ -42,12 +42,13 @@
         android:id="@+id/redButton"
         android:layout_width="200px"
         android:layout_height="200px"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/red"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:onClick="onClickRed"
-        app:layout_constraintTop_toBottomOf="@+id/speciesSpinner"
-        tools:layout_editor_absoluteX="36dp" />
+        android:onClick="changeText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/speciesSpinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
