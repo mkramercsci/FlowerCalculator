@@ -29,5 +29,10 @@ public class Pair {
         percentChance = newPercent;
     }
 
-    //I don't think this needs getters/setters? pairs shouldn't change after the program launches
+    public String printPair()
+    {
+        return parentA.flowerName() + " + " + parentB.flowerName() + " = " + child.flowerName();
+    }
+
+    //I don't think this needs getters/setters? pairs don't change after the program launches
 }

@@ -57,7 +57,7 @@ public class Flower
   // ex: "orange hyacinths", "red lilies", "blue roses"
   public String flowerName()
   {
-    return colorData.get(this.flowerColor()) + " " + speciesData.get(this.flowerSpecies());
+    return colorData.get(this.flowerColor()) + " " + speciesData.get(this.flowerSpecies()) + " " + hybridLevel;
   }
 
 }

@@ -12,23 +12,32 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
 {
-  TextView mainTV;
-  Button button, redBtn;
+  private static final int NUM_COLORS = 9;
+  private static final int NUM_SPECIES = 8;
+
+  //on screen items to be connected
+  TextView titleTV, mainTV;
+  Button redBtn;
   Spinner speciesSpin;
 
-  private static final Integer NUM_COLORS = 9;
-  private static final Integer NUM_SPECIES = 8;
+  //the app starts with Red Roses. these index ColorData and SpeciesData
+  private int selectedSpecies = 0;
+  private int selectedColor = 0;
 
-  //build all the potential color and species values
-  ColorData colorsData = new ColorData();
+  //build all the color and species values
   SpeciesData speciesData = new SpeciesData();
+  ColorData colorsData = new ColorData();
 
-  //holds all flowers that exist in the game
+  //store all flowers that exist in the game
   ArrayList<Flower> flowers = new ArrayList<>();
+
+  //store all flower parents + child + percent chance of child
+  ArrayList<Pair> pairs = new ArrayList<>();
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -37,11 +46,12 @@ public class MainActivity extends AppCompatActivity
     setContentView(R.layout.activity_main);
 
     //connect to the on screen textview
+    titleTV = findViewById(R.id.titleTextView);
     mainTV = findViewById(R.id.mainTextView);
 
     //connect to the on screen button
     redBtn = findViewById(R.id.redButton);
-    redBtn.setText("Red");
+    redBtn.setText("");
 
     //connect to the on screen spinner
     speciesSpin = findViewById(R.id.speciesSpinner);
@@ -58,6 +68,7 @@ public class MainActivity extends AppCompatActivity
 
     //make all the existing flower objects
     buildAllFlowers();
+    buildAllPairs();
 
     //test that all the flowers were created appropriately
     mainTV.setText("total = " + flowers.size());
@@ -70,13 +81,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id)
     {
-      String selection;
+      //update species to the newly selected value
+      selectedSpecies = position;
 
-      //get the selection from the spinner
-      selection = adapterView.getItemAtPosition(position).toString();
+      //update the title to reflect the selection
+      updateTitle(selectedColor, position);
 
-      //selection contains a string of the species selected by the user. pass it somewhere
-      //doSomething(selection);
+      //do something with position to display the pairs
+      //updatePairs(position);
     }
 
     @Override
@@ -215,38 +227,84 @@ public class MainActivity extends AppCompatActivity
   // method to build all flower pairs
   public void buildAllPairs()
   {
-    Pair a = new Pair();
+    // ROSES
+    Pair rose0 = new Pair(flowers.get(1), flowers.get(1), flowers.get(8), 0.25);      //white 0 + white 0 = purple 1
+    Pair rose1 = new Pair(flowers.get(1), flowers.get(3), flowers.get(2), 0.5);       //white 0 + yellow 0 = white 1
+    Pair rose2 = new Pair(flowers.get(3), flowers.get(0), flowers.get(4), 0.5);       //yellow 0 + red 0 = orange 1
+    Pair rose3 = new Pair(flowers.get(0), flowers.get(0), flowers.get(10), 0.25);     //red 0 + red 0 = black 3
+    Pair rose4 = new Pair(flowers.get(0), flowers.get(0), flowers.get(6), 0.25);      //red 0 + red 0 = pink 1
+    Pair rose5 = new Pair(flowers.get(8), flowers.get(2), flowers.get(9), 0.125);     //purple 1 + white 1 = purple 2
+    Pair rose6 = new Pair(flowers.get(9), flowers.get(4), flowers.get(5), 0.125);     //purple 2 + orange 1 = orange 2
+    Pair rose7 = new Pair(flowers.get(5), flowers.get(5), flowers.get(7), 0.0625);    //orange 2 + orange 2 = blue 3
+
+    //add all the roses into the list of pairs
+    pairs.add(rose0);
+    pairs.add(rose1);
+    pairs.add(rose2);
+    pairs.add(rose3);
+    pairs.add(rose4);
+    pairs.add(rose5);
+    pairs.add(rose6);
+    pairs.add(rose7);
+
+    // TULIPS
+    Pair tulip8 = new Pair(flowers.get(11), flowers.get(13), flowers.get(15), 0.5);      //red 0 + yellow 0 = orange 1
+    Pair tulip9 = new Pair(flowers.get(11), flowers.get(13), flowers.get(14), 0.5);      //red 0 + yellow 0 = yellow 1
+    Pair tulip10 = new Pair(flowers.get(11), flowers.get(11), flowers.get(18), 0.125);   //red 0 + red 0 = black 3
+    Pair tulip11 = new Pair(flowers.get(12), flowers.get(11), flowers.get(16), 0.5);     //white 0 + red 0 = pink 3
+    Pair tulip12 = new Pair(flowers.get(15), flowers.get(14), flowers.get(17), 0.0625);  //orange 1 + yellow 1 = purple 3
+
+    //add all the tulips to the list of pairs
+    pairs.add(tulip8);
+    pairs.add(tulip9);
+    pairs.add(tulip10);
+    pairs.add(tulip11);
+    pairs.add(tulip12);
+
+    // HYACINTH
+
+
   }
 
-  //method for testing that prints in the main textview
-  //currently connected to the RED button
+  //update the title with currently selected values
+  public void updateTitle(int color, int species)
+  {
+    String newTitle = colorsData.get(color) + " " + speciesData.get(species);
+    titleTV.setText(newTitle);
+  }
+
+  //method for testing that prints in mainTV
+  //connected to the RED button
   public void changeText(View view)
   {
     String showThis = "";
 
-    for (int i = 0; i < flowers.size(); i++)
+    //print all the newly built pairs
+/*    for (int i = 8; i <= 12; i++)
     {
-      //retrieve all flowers of a certain species
-      if (flowers.get(i).flowerSpecies() == 7)
-      {
-        showThis += flowers.get(i).flowerName() + " " + flowers.get(i).flowerHybridLevel() + "\n";
-      }
+      showThis += pairs.get(i).printPair() + "\n";
+    }
+*/
+    //roses = 8
+    //tulips = 7
+
+    for(int i = 13; i <= 23; i++)
+    {
+      showThis += i + ": " + flowers.get(i).flowerName() + "\n";
     }
 
-    //display the flowers
     mainTV.setText(showThis);
+
   }//end changeText
 
   //method to update the screen when a color button is clicked
   public void onClickColor(View view)
   {
     //we want to update two scrollviews:
-      //list of ways to obtain selected flower
-      //list of recipes involving selected flower
+      //list of pairs where child is the selected flower
+      //list of pairs where one parent is the selected flower
 
-    //find out which flower we want
-      //make a determineSelected method?
-
-    //scan a list of recipes for any occurance of selected flower as parents or child
+    //scan a list of pairs for any occurance of selected flower as parents or child
   }
+
 }// end MainActivity
