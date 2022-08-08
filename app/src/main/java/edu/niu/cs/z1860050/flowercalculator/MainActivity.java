@@ -228,16 +228,16 @@ public class MainActivity extends AppCompatActivity
   public void buildAllPairs()
   {
     // ROSES
-    Pair rose0 = new Pair(flowers.get(1), flowers.get(1), flowers.get(8), 0.25);      //white 0 + white 0 = purple 1
-    Pair rose1 = new Pair(flowers.get(1), flowers.get(3), flowers.get(2), 0.5);       //white 0 + yellow 0 = white 1
-    Pair rose2 = new Pair(flowers.get(3), flowers.get(0), flowers.get(4), 0.5);       //yellow 0 + red 0 = orange 1
-    Pair rose3 = new Pair(flowers.get(0), flowers.get(0), flowers.get(10), 0.25);     //red 0 + red 0 = black 3
-    Pair rose4 = new Pair(flowers.get(0), flowers.get(0), flowers.get(6), 0.25);      //red 0 + red 0 = pink 1
-    Pair rose5 = new Pair(flowers.get(8), flowers.get(2), flowers.get(9), 0.125);     //purple 1 + white 1 = purple 2
-    Pair rose6 = new Pair(flowers.get(9), flowers.get(4), flowers.get(5), 0.125);     //purple 2 + orange 1 = orange 2
-    Pair rose7 = new Pair(flowers.get(5), flowers.get(5), flowers.get(7), 0.0625);    //orange 2 + orange 2 = blue 3
+    Pair rose0 = new Pair(flowers.get(1), flowers.get(1), flowers.get(8), 0.25);           //white 0 + white 0 = purple 1
+    Pair rose1 = new Pair(flowers.get(1), flowers.get(3), flowers.get(2), 0.5);            //white 0 + yellow 0 = white 1
+    Pair rose2 = new Pair(flowers.get(3), flowers.get(0), flowers.get(4), 0.5);            //yellow 0 + red 0 = orange 1
+    Pair rose3 = new Pair(flowers.get(0), flowers.get(0), flowers.get(10), 0.25);          //red 0 + red 0 = black 3
+    Pair rose4 = new Pair(flowers.get(0), flowers.get(0), flowers.get(6), 0.25);           //red 0 + red 0 = pink 1
+    Pair rose5 = new Pair(flowers.get(8), flowers.get(2), flowers.get(9), 0.125);          //purple 1 + white 1 = purple 2
+    Pair rose6 = new Pair(flowers.get(9), flowers.get(4), flowers.get(5), 0.125);          //purple 2 + orange 1 = orange 2
+    Pair rose7 = new Pair(flowers.get(5), flowers.get(5), flowers.get(7), 0.0625);         //orange 2 + orange 2 = blue 3
 
-    //add all the roses into the list of pairs
+    //add the roses into the list of pairs
     pairs.add(rose0);
     pairs.add(rose1);
     pairs.add(rose2);
@@ -248,13 +248,13 @@ public class MainActivity extends AppCompatActivity
     pairs.add(rose7);
 
     // TULIPS
-    Pair tulip8 = new Pair(flowers.get(11), flowers.get(13), flowers.get(15), 0.5);      //red 0 + yellow 0 = orange 1
-    Pair tulip9 = new Pair(flowers.get(11), flowers.get(13), flowers.get(14), 0.5);      //red 0 + yellow 0 = yellow 1
-    Pair tulip10 = new Pair(flowers.get(11), flowers.get(11), flowers.get(18), 0.125);   //red 0 + red 0 = black 3
-    Pair tulip11 = new Pair(flowers.get(12), flowers.get(11), flowers.get(16), 0.5);     //white 0 + red 0 = pink 3
-    Pair tulip12 = new Pair(flowers.get(15), flowers.get(14), flowers.get(17), 0.0625);  //orange 1 + yellow 1 = purple 3
+    Pair tulip8 = new Pair(flowers.get(11), flowers.get(13), flowers.get(15), 0.5);        //red 0 + yellow 0 = orange 1
+    Pair tulip9 = new Pair(flowers.get(11), flowers.get(13), flowers.get(14), 0.5);        //red 0 + yellow 0 = yellow 1
+    Pair tulip10 = new Pair(flowers.get(11), flowers.get(11), flowers.get(18), 0.125);     //red 0 + red 0 = black 3
+    Pair tulip11 = new Pair(flowers.get(12), flowers.get(11), flowers.get(16), 0.5);       //white 0 + red 0 = pink 3
+    Pair tulip12 = new Pair(flowers.get(15), flowers.get(14), flowers.get(17), 0.0625);    //orange 1 + yellow 1 = purple 3
 
-    //add all the tulips to the list of pairs
+    //add the tulips to the list of pairs
     pairs.add(tulip8);
     pairs.add(tulip9);
     pairs.add(tulip10);
@@ -262,8 +262,74 @@ public class MainActivity extends AppCompatActivity
     pairs.add(tulip12);
 
     // HYACINTH
+    Pair hyacinth13 = new Pair(flowers.get(19), flowers.get(21), flowers.get(23), 0.5);    //red 0 + yellow 0 = orange 1
+    Pair hyacinth14 = new Pair(flowers.get(19), flowers.get(21), flowers.get(22), 0.5);    //red 0 + yellow 0 = yellow 1
+    Pair hyacinth15 = new Pair(flowers.get(20), flowers.get(19), flowers.get(24), 0.25);   //white 0 + red 0 = pink 3
+    Pair hyacinth16 = new Pair(flowers.get(20), flowers.get(20), flowers.get(25), 0.125);  //white 0 + white 0 = blue 3
+    Pair hyacinth17 = new Pair(flowers.get(23), flowers.get(22), flowers.get(26), 0.0625); //orange 1 + yellow 1 = purple 3
 
+    //add the hyacinths into the list of pairs
+    pairs.add(hyacinth13);
+    pairs.add(hyacinth14);
+    pairs.add(hyacinth15);
+    pairs.add(hyacinth16);
+    pairs.add(hyacinth17);
 
+    // LILIES - white 0 lilies not used for any pair
+    Pair lily18 = new Pair(flowers.get(27), flowers.get(27), flowers.get(32), 0.125);      //red 0 + red 0 = black 3
+    Pair lily19 = new Pair(flowers.get(27), flowers.get(27), flowers.get(31), 0.125);      //red 0 + red 0 = pink 3
+    Pair lily20 = new Pair(flowers.get(27), flowers.get(29), flowers.get(30), 0.25);       //red 0 + yellow 0 = orange 3
+
+    //add the lilies into the list of pairs
+    pairs.add(lily18);
+    pairs.add(lily19);
+    pairs.add(lily20);
+
+    // COSMOS
+    Pair cosmos21 = new Pair(flowers.get(33), flowers.get(35), flowers.get(36), 0.5);      //red 0 + yellow 0 = orange 1
+    Pair cosmos22 = new Pair(flowers.get(33), flowers.get(34), flowers.get(37), 1);        //red 0 + white 0 = pink 3
+    Pair cosmos23 = new Pair(flowers.get(36), flowers.get(36), flowers.get(38), 0.0625);   //orange 1 + orange 1 = black 3
+
+    //add the cosmos into the list of pairs
+    pairs.add(cosmos21);
+    pairs.add(cosmos22);
+    pairs.add(cosmos23);
+
+    // MUMS
+    Pair mums24 = new Pair(flowers.get(39), flowers.get(41), flowers.get(42), 1);          //red 0 + yellow 0 = yellow 1
+    Pair mums25 = new Pair(flowers.get(39), flowers.get(40), flowers.get(43), 1);          //red 0 + white 0 = pink 3
+    Pair mums26 = new Pair(flowers.get(42), flowers.get(42), flowers.get(44), 0.25);       //yellow 1 + yellow 1 = purple 1
+    Pair mums27 = new Pair(flowers.get(44), flowers.get(44), flowers.get(45), 0.25);       //purple 1 + purple 1 = green 3
+
+    //add the mums into the list of pairs
+    pairs.add(mums24);
+    pairs.add(mums25);
+    pairs.add(mums26);
+    pairs.add(mums27);
+
+    // WINDFLOWERS
+    Pair wind28 = new Pair(flowers.get(48), flowers.get(48), flowers.get(51), .25);        //white 0 + white 0 = blue 1
+    Pair wind29 = new Pair(flowers.get(46), flowers.get(49), flowers.get(50), 1);          //red 0 + orange 0 = pink 3
+    Pair wind30 = new Pair(flowers.get(51), flowers.get(46), flowers.get(47), 1);          //blue 1 + red 0 = red 1
+    Pair wind31 = new Pair(flowers.get(47), flowers.get(47), flowers.get(52), 0.0625);     //red 1 + red 1 = purple 3
+
+    //add the windflowers into the list of pairs
+    pairs.add(wind28);
+    pairs.add(wind29);
+    pairs.add(wind30);
+    pairs.add(wind31);
+
+    // PANSIES
+    Pair pansies32 = new Pair(flowers.get(55), flowers.get(55), flowers.get(58), .25);     //white 0 + white 0 = blue 1
+    Pair pansies33 = new Pair(flowers.get(53), flowers.get(56), flowers.get(57), 1);       //red 0 + yellow 0 = orange 3
+    Pair pansies34 = new Pair(flowers.get(58), flowers.get(53), flowers.get(54), 1);       //blue 1 + red 0 = red 1
+    Pair pansies35 = new Pair(flowers.get(54), flowers.get(54), flowers.get(59), 0.0625);  //red 1 + red 1 = purple 3
+
+    //add the pansies into the list of pairs
+    pairs.add(pansies32);
+    pairs.add(pansies33);
+    pairs.add(pansies34);
+    pairs.add(pansies35);
   }
 
   //update the title with currently selected values
@@ -280,17 +346,9 @@ public class MainActivity extends AppCompatActivity
     String showThis = "";
 
     //print all the newly built pairs
-/*    for (int i = 8; i <= 12; i++)
+    for (int i = 0; i <= 7; i++)
     {
-      showThis += pairs.get(i).printPair() + "\n";
-    }
-*/
-    //roses = 8
-    //tulips = 7
-
-    for(int i = 13; i <= 23; i++)
-    {
-      showThis += i + ": " + flowers.get(i).flowerName() + "\n";
+      showThis += pairs.get(i).printPair() + " (" + pairs.get(i).percentChance + "%) " + "\n";
     }
 
     mainTV.setText(showThis);
